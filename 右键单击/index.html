@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid #999;
+        }
+        #menu{
+            position: fixed;
+            border: 1px solid #f00;
+            max-width: 100%;
+            max-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        #menu>li{
+            list-style: none;
+            border: 1px solid #0f0;
+            margin: 8px 8px;
+            cursor: pointer;
+        }
+        .hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        input[type=radio]{
+            visibility: hidden;
+        }
+        input[type=radio]::after{
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: block;
+            visibility: visible;
+            background-repeat: no-repeat;
+            background-image: url('./img/input.png');
+            background-position: -23px -8px;
+        }
+        input[type=radio]:checked::after{
+            background-position: -57px -8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <label for="firstRadio">firstRadio</label>
+    <input type="radio" name="test" id="firstRadio" />
+    <label for="twoRadio">twoRadio</label>
+    <input type="radio" name="test" id="twoRadio" />
+    <ul id="menu" class="hide">
+        <li>选项一</li>
+        <li>选项二</li>
+        <li>选项三</li>
+    </ul>
+    <script>
+        //右键单击菜单
+        let app =document.getElementById('app');
+        let menu = document.getElementById('menu');
+        app.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            menuLocation(menu,e.clientX,e.clientY);
+            menu.setAttribute('class', 'show');
+        });
+        app.addEventListener('click',function(){
+            menu.setAttribute('class', 'hide');
+        })
+
+        menu.addEventListener('click', function (e) {
+            let ev = e || window.event;
+            let target = ev.target || ev.srcElement;
+            if (target.nodeName.toLowerCase() === 'li') {
+                console.log('点击');
+                menu.setAttribute('class', 'hide');
+            }
+        });
+        menu.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        function menuLocation(el,x,y){
+            let winHei = document.body.clientHeight;
+            let winWid = document.body.clientWidth;
+            let elWid = el.offsetWidth;
+            let elHei = el.offsetHeight;
+            if(x+elWid>winWid){
+                x -= elWid;
+            }
+            if(y+elHei>winHei){
+                y = y - elHei;
+            }
+            el.setAttribute('style','top:'+y+'px;left:'+x+'px');
+        }
+    </script>
+</body>
+
+</html>
