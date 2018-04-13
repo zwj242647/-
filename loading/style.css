@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.border{
+    animation: roll 2s linear infinite;
+    border: 2px solid #e86cfc;
+    border-bottom-color: transparent;
+    border-radius: 40px;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+.loading{
+    position: relative;
+    background-image: -webkit-linear-gradient(0deg,#6e37fd,#6e37fd);
+    background-clip: content-box;
+    background-size: 50% 100%;
+    background-color: #d08eff;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+}
+.l{
+    background-color: #6e37fd;
+    border-radius: 20px 0 0 20px;
+    width: 20px;
+    height: 40px;
+    transform-origin: right;
+    animation: left 2s linear infinite;
+}
+.r{
+    background-color: #d08eff;
+    border-radius: 0 20px 20px 0;
+    width: 20px;
+    height: 40px;
+    transform-origin: left;
+    animation: right 2s linear infinite;
+}
+@keyframes left{
+    0%{
+        transform: rotate(0deg);
+        z-index: 3;
+    }
+    25%{
+        transform: rotate(180deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes right{
+    0%{
+        transform: rotate(0deg);
+        z-index: 2;
+    }
+    25%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}
+@keyframes roll{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

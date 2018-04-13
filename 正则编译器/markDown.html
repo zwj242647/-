@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>markdown</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .edit {
+            width: 50%;
+            box-sizing: border-box;
+            background-color: #272822;
+            overflow-y: scroll;
+            color: #ccc;
+            font-size: 12px;
+            display: flex;
+        }
+
+        #line {
+            box-sizing: border-box;
+            border-right: 1px solid #fff;
+            min-width: 46px;
+        }
+
+        #line>p {
+            box-sizing: border-box;
+            padding: 0 13px;
+            text-align: right;
+        }
+
+        #code {
+            padding: 0 6px;
+        }
+
+        #code:focus {
+            outline: none;
+        }
+
+        #code>p {
+            white-space: nowrap;
+        }
+
+        #show {
+            overflow-y: scroll;
+            width: 50%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="edit">
+            <div id="line"></div>
+            <div id="code" contenteditable="true">
+                <p># h1</p>
+                <p>### h3</p>
+                <p>下方hr</p>
+                <p>---</p>
+                <p>代码：`code`, 加粗：**strong**</p>
+                <p>[链接](https://www.baidu.com)</p>
+                <p>![图片](https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3525627401,3002093773&fm=27&gp=0.jpg)</p>
+                <p>无序列表</p>
+                <p>- list1</p>
+                <p>- list22</p>
+                <p>- list333</p>
+                <p>1. ordered list1</p>
+                <p>2. ordered list22</p>
+                <p>3. ordered list33</p>
+                <p>```javascript</p>
+                <p>alert("成功");</p>
+                <p>```</p>
+            </div>
+        </div>
+        <div id="show">
+
+        </div>
+        <script src="./index.js"></script>
+    </div>
+</body>
+
+</html>
